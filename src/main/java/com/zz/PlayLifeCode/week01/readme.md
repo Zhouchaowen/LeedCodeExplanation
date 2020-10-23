@@ -9,3 +9,8 @@
 # 链表使用
 1.遍历 l1 = l1->next;
 2.模拟加法
+
+# Sting使用
+1.s.charAt(idx) 获取下标为idx的字符
+
+# 双指针 l，r
