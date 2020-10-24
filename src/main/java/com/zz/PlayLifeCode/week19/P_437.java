@@ -1,5 +1,7 @@
 package com.zz.PlayLifeCode.week19;
 
+import java.util.HashMap;
+
 /**
  * https://leetcode-cn.com/problems/path-sum-iii/solution/
  *
@@ -37,4 +39,33 @@ public class P_437 {
         int result = sum == 0?1:0;
         return result+currentPath(root.left,sum)+currentPath(root.right,sum);
     }
+
+    // -------------
+    HashMap<Integer,Integer> mp = new HashMap<>();
+    int res = 0;
+    public int pathSum1(TreeNode root, int sum) {
+        mp.put(0,1);
+        dfs(root,sum,0);
+        return res;
+    }
+
+    private void dfs(TreeNode root, int sum, int cur) {
+        if(root == null) return;
+        cur += root.val;
+        int t = 0;
+        if (mp.containsKey(cur-sum)){
+            t = mp.get(cur-sum).intValue();
+        }
+        res += t ;
+        t = 0;
+        if (mp.containsKey(cur)){
+            t = mp.get(cur).intValue();
+        }
+        mp.put(cur,t+1);
+        dfs(root.left,sum,cur);
+        dfs(root.right,sum,cur);
+        mp.put(cur,t-1);
+    }
+
+
 }
