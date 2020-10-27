@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  *
  * https://leetcode-cn.com/problems/add-two-numbers-ii/
- * 栈
+ * 栈: 先进后出+进位
  *
  */
 public class P_445 {
