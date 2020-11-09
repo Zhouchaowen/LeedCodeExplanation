@@ -41,7 +41,19 @@ public class F_052 {
         return null;
     }
 
-    // 数学定理
+    /** 规律
+     * 4,1,[8],4,5 -> 5,0,1,[8],4,5 null
+     * n1
+     * 5,0,1,[8],4,5 -> 4,1,[8],4,5 null
+     * n2
+     *
+     * 如果没有相等的他们，因为headA+headB 拼接后链是一样长的
+     * 所以最后会走到末尾 等于 null 并不会死循环
+     *
+     * @param headA
+     * @param headB
+     * @return
+     */
     public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
         ListNode node1 = headA;
         ListNode node2 = headB;
