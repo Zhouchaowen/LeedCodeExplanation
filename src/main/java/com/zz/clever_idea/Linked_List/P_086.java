@@ -10,6 +10,7 @@ package com.zz.clever_idea.Linked_List;
  * 输入: head = 1->4->3->2->5->2, x = 3
  * 输出: 1->2->2->4->3->5
  *
+ * 同面试题02.04
  */
 public class P_086 {
     class ListNode {
@@ -77,4 +78,32 @@ public class P_086 {
         }
         return superHead.next;
     }
+
+    public ListNode partition2(ListNode head, int x) {
+        if (head == null || head.next == null) return head;
+        // 储存小于x的节点
+        ListNode leftOne = new ListNode(-1);
+        ListNode left = leftOne;
+        // 储存大于等于x的节点
+        ListNode rightOne = new ListNode(-1);
+        ListNode right = leftOne;
+        ListNode next;
+        while (head!=null){
+            next = head.next;
+            if (head.val<x){
+                left.next = head;
+                left = head;
+            }else {
+                right.next = head;
+                right = head;
+            }
+            // 必须赋值为null,不然可能成环
+            head.next = null;
+            head = next;
+        }
+        // 拼接
+        left.next = rightOne.next;
+        return leftOne.next;
+    }
+
 }

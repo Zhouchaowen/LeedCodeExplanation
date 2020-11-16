@@ -3,6 +3,7 @@ package com.zz.clever_idea.Linked_List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * https://leetcode-cn.com/problems/copy-list-with-random-pointer/
@@ -41,6 +42,7 @@ import java.util.List;
  *
  * 有没有空间O(1)?
  *
+ * 同offer35
  */
 public class P_138 {
     class Node {
@@ -117,5 +119,26 @@ public class P_138 {
             newNodeNext = newNodeNext.next;
         }
         return ans;
+    }
+
+    public Node copyRandomList3(Node head) {
+        if (head == null)return null;
+        Node cur = head;
+        Map<Node,Node> map = new HashMap<>();
+        // map储存复杂出来的所有节点
+        while(cur!=null){
+            map.put(cur,new Node(cur.val));
+            cur = cur.next;
+        }
+        cur = head;
+        // 链接节点
+        while (cur!=null){
+            // cur链接cur.next
+            map.get(cur).next = map.get(cur.next);
+            // 当前的cur.random 链接原版random复制出来的值
+            map.get(cur).random = map.get(cur.random);
+            cur = cur.next;
+        }
+        return map.get(head);
     }
 }
