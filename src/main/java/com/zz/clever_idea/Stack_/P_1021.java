@@ -1,4 +1,4 @@
-package com.zz.clever_idea.StackProblem;
+package com.zz.clever_idea.Stack_;
 
 import java.util.Stack;
 
