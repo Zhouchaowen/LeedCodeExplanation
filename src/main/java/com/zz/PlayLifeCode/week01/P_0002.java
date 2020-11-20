@@ -18,6 +18,7 @@ package com.zz.PlayLifeCode.week01;
  * 1.链表使用
  * 2.模拟加法
  *
+ * 同面试题02.05
  */
 public class P_0002 {
     public class ListNode {

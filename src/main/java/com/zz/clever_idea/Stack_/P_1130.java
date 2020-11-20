@@ -107,4 +107,26 @@ public class P_1130 {
         }
         return ans;
     }
+
+    public int mctFromLeafValues2(int[] arr) {
+        int ans = 0;
+        for (int i = 0,j = arr.length-1;i!=j;){
+            if (arr[i]>=arr[j]){
+                ans += arr[i]*getMax(arr,i+1,j);
+                i++;
+            }else{
+                ans += arr[j]*getMax(arr,i,j-1);
+                j--;
+            }
+        }
+        return ans;
+    }
+
+    private int getMax(int[] arr, int i, int j) {
+        int maxx = Integer.MIN_VALUE;
+        for(int l = i;l<=j;l++){
+            maxx = Math.max(arr[l],maxx);
+        }
+        return maxx;
+    }
 }
