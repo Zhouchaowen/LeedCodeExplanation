@@ -26,34 +26,19 @@ package com.zz.clever_idea.Stack_;
 public class P_1541 {
 
     public int minInsertions(String s) {
-        s = s.replace("())","");
-        int len = s.length();
-        while(len != s.replace("())","").length()){
-            s = s.replace("())","");
-            len = s.length();
-        }
         int ans = 0;
-        s = s.replace("()","");
-        while(len != s.length()){
-            ans += (len-s.length())/2;
-            s = s.replace("()","");
-            len = s.length();
+        int left = 0;
+        int n = s.length();
+        for(int i = 0;i<n;i++){
+            if(s.charAt(i) == '(') ++left;
+            else {
+                if (i+1<n && s.charAt(i+1) == ')') i++;
+                else ans++;
+                if (left>0) left--;
+                else ans++;
+            }
         }
-
-        s = s.replace("(", "");
-        while(len != s.length()){
-            ans += (len - s.length())*2;
-            s = s.replace("(", "");
-            len = s.length();
-        }
-        s = s.replace("))","");
-        while(len != s.length()){
-            ans += (len - s.length())/2;
-            s = s.replace("))","");
-            len = s.length();
-        }
-        ans += s.length()*2;
+        ans += left*2;
         return ans;
-
     }
 }
